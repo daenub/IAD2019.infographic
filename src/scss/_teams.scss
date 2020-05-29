@@ -1,0 +1,106 @@
+$team-width: 3.75rem;
+
+$row-templates: "";
+
+@for $i from 4 through 20 {
+  $row-templates: $row-templates + "[season-#{$i - 1}-#{$i}-end season-#{$i}-#{$i+1}-start] #{$team-width} ";
+}
+
+$row-templates: unquote($row-templates);
+
+.teams {
+  display: grid;
+  grid-template-rows: $row-templates;
+  grid-template-columns: max-content repeat(6, minmax(0, $team-width));
+  grid-gap: 0.125rem 1rem;
+
+  justify-content: flex-start;
+}
+
+.teams__season {
+  margin: 0 2rem 0 0;
+
+  grid-column: 1;
+  align-self: center;
+
+  @for $i from 4 through 20 {
+    &--#{$i}-#{$i + 1} {
+      grid-row: season-#{$i}-#{$i + 1}-start / season-#{$i}-#{$i + 1}-end
+    }
+  }
+
+  line-height: 1;
+}
+
+.team {
+  background-color: $black;
+  border-radius: $team-width / 2;
+
+  &::before {
+    content: "";
+    display: block;
+    width: $team-width - 1rem;
+    height: $team-width - 1rem;
+    margin-left: .5rem;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    background: center / contain no-repeat;
+
+    position: sticky;
+    top: .5rem;
+  }
+}
+
+.team__overlay {
+  display: none;
+}
+
+.team--scb-junior {
+  grid-column: 2;
+
+  &::before {
+    background-image: url(../images/scb.png);
+  }
+}
+
+.team--scb {
+  grid-column: 3;
+
+  &::before {
+    background-image: url(../images/scb.png);
+  }
+}
+
+.team--milwaukee {
+  grid-column: 4;
+
+  &::before {
+    background-image: url(../images/milwaukee.png);
+  }
+}
+
+.team--nashville {
+  grid-column: 5;
+
+  &::before {
+    background-image: url(../images/nashville.png);
+  }
+}
+
+.team--ch {
+  grid-column: 6;
+
+  &::before {
+    background-image: url(../images/ch.png);
+    background-size: 80%;
+  }
+}
+
+.team--eu {
+  grid-column: 7;
+
+  &::before {
+    background-image: url(../images/team-europe.png);
+    background-size: 80%;
+  }
+}
