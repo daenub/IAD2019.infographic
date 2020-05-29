@@ -10,3 +10,12 @@ html {
 body {
   font-family: 'Raleway', sans-serif;
 }
+
+.cell {
+  max-width: 60rem;
+  margin: 0 1rem;
+
+  @media screen and (min-width: 60rem) {
+    margin: 0 auto;
+  }
+}

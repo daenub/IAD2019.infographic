@@ -1,4 +1,5 @@
 $team-width: 3.75rem;
+$row-gap: 0.125rem * 3;
 
 $row-templates: "";
 
@@ -12,9 +13,25 @@ $row-templates: unquote($row-templates);
   display: grid;
   grid-template-rows: $row-templates;
   grid-template-columns: max-content repeat(6, minmax(0, $team-width));
-  grid-gap: 0.125rem 1rem;
+  grid-gap: $row-gap 1rem;
 
-  justify-content: flex-start;
+  width: max-content;
+  margin: 0 auto;
+
+  $border-color: rgba(0, 0, 0, 0.25);
+
+  background-image: linear-gradient(
+    transparent 0,
+    transparent #{$team-width + ($row-gap / 3)},
+    $border-color 0,
+    $border-color #{$team-width + ($row-gap / 3 * 2)},
+    transparent 0,
+    transparent #{$team-width + $row-gap}
+  );
+  background-size: 100% $team-width + $row-gap;
+  background-position: 0 0;
+  background-repeat: repeat-y;
+
 }
 
 .teams__season {
