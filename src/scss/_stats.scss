@@ -1,3 +1,5 @@
+$chart-height: 13rem;
+
 .stats {
   display: flex;
   align-items: flex-start;
@@ -10,6 +12,7 @@
 }
 
 .stats__marker {
+  font: inherit;
   cursor: pointer;
   display: block;
   padding: 0;
@@ -25,11 +28,25 @@
   margin-left: -0.75rem;
 
   border-radius: 50%;
+}
 
-  transition: ease-in-out transform 0.15s;
+.stats__marker-label {
+  font: inherit;
+  background-color: $white;
+  margin-left: 1.5rem;
+  line-height: 1;
+  padding: 0.25rem;
+  box-shadow: 0 0 4px 0 transparentize($black, 0.2);
 
-  &:hover {
-    transform: scale(1.25);
+  opacity: 0;
+  visibility: hidden;
+
+  transition: ease-in-out 0.15s;
+  transition-property: visibility opacity;
+
+  .stats__marker:hover & {
+    opacity: 1;
+    visibility: visible;
   }
 }
 
@@ -43,7 +60,8 @@
   grid-template-columns: 3rem 1fr;
   grid-template-areas:
     "axis chart"
-    ". labels";
+    ". labels"
+    "legend legend";
 }
 
 .bar-chart__bars {
@@ -55,7 +73,7 @@
   list-style: none;
   display: flex;
 
-  height: 10rem;
+  height: $chart-height;
 }
 
 .bar-chart__bar {
@@ -74,13 +92,40 @@
   background-color: $gold;
   height: 1%;
   transform-origin: bottom center;
+  transition: 0.35s ease-in-out;
+
+  .bar-chart--multi & {
+    display: block;
+    position: relative;
+  }
 }
 
 .bar-chart__value {
   position: relative;
   z-index: 10;
   color: $white;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
+
+  .bar-chart--multi & {
+    position: absolute;
+    left: 50%;
+    bottom: 100%;
+    transform: translateX(-50%);
+    color: $navy-blue;
+  }
+}
+
+.bar-chart__value-part {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: $white;
+  font-size: 0.75rem;
+
+  &:nth-child(2) {
+    background-color: $navy-blue;
+  }
 }
 
 .bar-chart__labels {
@@ -96,13 +141,52 @@
   font-weight: $font-weight-extra-bold;
 }
 
+.bar-chart__legend {
+  grid-area: legend;
+
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.bar-chart__legend-item {
+  position: relative;
+  padding-left: 1.5em;
+  margin-right: 1.5rem;
+
+  &:nth-child(1) {
+    &::before {
+      background-color: $navy-blue;
+    }
+  }
+
+  &:nth-child(2) {
+    &::before {
+      background-color: $gold;
+    }
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    display: block;
+
+    height: 1em;
+    width: 1em;
+    background-color: $gold;
+
+    transform: translateY(-50%);
+  }
+}
 /* Y Axis */
 
 $axis-width: 4px;
 
 .bar-chart__y-axis {
   grid-area: axis;
-  height: 10rem;
+  height: $chart-height;
   border-right: $axis-width solid $black;
 
   display: flex;
