@@ -49,5 +49,11 @@
     "tabWidth": 2,
     "semi": false,
     "bracketSpacing": false
+  },
+  "dependencies": {
+    "@babel/preset-react": "^7.10.1",
+    "eslint-plugin-react": "^7.20.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   }
 }

@@ -1,14 +1,15 @@
-@import 'variables';
-@import 'typography';
+@import "variables";
+@import "typography";
 
-@import 'teams';
+@import "teams";
+@import "stats";
 
 html {
   font-size: $root-font-size;
 }
 
 body {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
 .cell {
@@ -18,4 +19,8 @@ body {
   @media screen and (min-width: 60rem) {
     margin: 0 auto;
   }
+}
+
+.section__title {
+  @extend %h2-font-styles;
 }

@@ -1,0 +1,110 @@
+.stats {
+}
+
+.bar-chart {
+  display: grid;
+  grid-template-rows: max-content max-content;
+  grid-template-columns: 3rem 1fr;
+  grid-template-areas:
+    "axis chart"
+    ". labels";
+}
+
+.bar-chart__bars {
+  grid-area: chart;
+  // TODO proper reset:
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+  display: flex;
+
+  height: 10rem;
+}
+
+.bar-chart__bar {
+  flex: 1;
+  margin: 0 0.5rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.bar-chart__bar-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $gold;
+  height: 1%;
+  transform-origin: bottom center;
+}
+
+.bar-chart__value {
+  position: relative;
+  z-index: 10;
+  color: $white;
+  font-size: 1.25rem;
+}
+
+.bar-chart__labels {
+  grid-area: labels;
+  display: flex;
+}
+
+.bar-chart__label {
+  flex: 1;
+  margin: 0.5rem 0.5rem;
+
+  text-align: center;
+  font-weight: $font-weight-extra-bold;
+}
+
+/* Y Axis */
+
+$axis-width: 4px;
+
+.bar-chart__y-axis {
+  grid-area: axis;
+  height: 10rem;
+  border-right: $axis-width solid $black;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.bar-chart__y-axis-min,
+.bar-chart__y-axis-max {
+  position: relative;
+  padding-right: 1rem;
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 50%;
+
+    width: 0.5rem;
+    height: $axis-width;
+    background-color: $black;
+  }
+}
+
+.bar-chart__y-axis-min {
+  transform: translateY(50%);
+
+  &::before {
+    margin-top: -$axis-width;
+  }
+}
+
+.bar-chart__y-axis-max {
+  transform: translateY(-50%);
+
+  &::before {
+    margin-bottom: -$axis-width;
+  }
+}

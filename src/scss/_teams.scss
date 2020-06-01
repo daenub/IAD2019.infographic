@@ -4,7 +4,8 @@ $row-gap: 0.125rem * 3;
 $row-templates: "";
 
 @for $i from 4 through 20 {
-  $row-templates: $row-templates + "[season-#{$i - 1}-#{$i}-end season-#{$i}-#{$i+1}-start] #{$team-width} ";
+  $row-templates: $row-templates +
+    "[season-#{$i - 1}-#{$i}-end season-#{$i}-#{$i+1}-start] #{$team-width} ";
 }
 
 $row-templates: unquote($row-templates);
@@ -31,7 +32,6 @@ $row-templates: unquote($row-templates);
   background-size: 100% $team-width + $row-gap;
   background-position: 0 0;
   background-repeat: repeat-y;
-
 }
 
 .teams__season {
@@ -42,7 +42,7 @@ $row-templates: unquote($row-templates);
 
   @for $i from 4 through 20 {
     &--#{$i}-#{$i + 1} {
-      grid-row: season-#{$i}-#{$i + 1}-start / season-#{$i}-#{$i + 1}-end
+      grid-row: season-#{$i}-#{$i + 1}-start / season-#{$i}-#{$i + 1}-end;
     }
   }
 
@@ -60,13 +60,13 @@ $row-templates: unquote($row-templates);
     display: block;
     width: $team-width - 1rem;
     height: $team-width - 1rem;
-    margin-left: .5rem;
-    margin-top: .5rem;
-    margin-bottom: .5rem;
+    margin-left: 0.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
     background: center / contain no-repeat;
 
     position: sticky;
-    top: .5rem;
+    top: 0.5rem;
   }
 }
 
@@ -87,7 +87,7 @@ $row-templates: unquote($row-templates);
 
   opacity: 0;
   visibility: hidden;
-  transition: .3s ease;
+  transition: 0.3s ease;
 
   .team:hover & {
     opacity: 1;
