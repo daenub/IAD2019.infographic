@@ -18,39 +18,39 @@ const data = {
     title: "Punkte",
     bars: [
       {
-        label: "11 / 12",
+        label: "11/12",
         values: [5, 11],
       },
       {
-        label: "12 / 13",
+        label: "12/13",
         values: [5, 13],
       },
       {
-        label: "13 / 14",
+        label: "13/14",
         values: [13, 27],
       },
       {
-        label: "14 / 15",
+        label: "14/15",
         values: [15, 40],
       },
       {
-        label: "15 / 16",
+        label: "15/16",
         values: [14, 47],
       },
       {
-        label: "16 / 17",
+        label: "16/17",
         values: [12, 37],
       },
       {
-        label: "17 / 18",
+        label: "17/18",
         values: [14, 39],
       },
       {
-        label: "18 / 19",
+        label: "18/19",
         values: [15, 41],
       },
       {
-        label: "19 / 20",
+        label: "19/20",
         values: [16, 49],
       },
     ],
@@ -58,10 +58,62 @@ const data = {
   },
 }
 
+const marker = [
+  {
+    key: "shots",
+    label: "shots",
+    x: 40,
+    y: 56,
+  },
+  {
+    key: "toi",
+    label: "toi",
+    x: 85,
+    y: 87,
+  },
+  {
+    key: "points",
+    label: "points",
+    x: 67,
+    y: 95,
+  },
+  {
+    key: "checks",
+    label: "checks",
+    x: 58,
+    y: 27,
+  },
+  {
+    key: "passes",
+    label: "passes",
+    x: 52,
+    y: 15,
+  },
+]
+
 const Stats = () => {
   return (
     <div className="stats">
-      <BarChart data={data.points} />
+      <Selector />
+      <div className="stats__chart-wrapper">
+        <BarChart data={data.points} />
+      </div>
+    </div>
+  )
+}
+
+const Selector = () => {
+  return (
+    <div className="stats__selector">
+      <img src={require("../images/selection-sq.jpg")} alt="Roman Josi" />
+      {marker.map(m => (
+        <button
+          className="stats__marker"
+          style={{top: `${m.y}%`, left: `${m.x}%`}}
+        >
+          <span className="visually-hidden">{m.label}</span>
+        </button>
+      ))}
     </div>
   )
 }

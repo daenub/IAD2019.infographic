@@ -1,4 +1,39 @@
 .stats {
+  display: flex;
+}
+
+.stats__selector {
+  width: 40%;
+
+  position: relative;
+}
+
+.stats__marker {
+  cursor: pointer;
+  display: block;
+  padding: 0;
+
+  position: absolute;
+  border: 4px solid #f3dfb3;
+  box-shadow: 0 0 4px 0 transparentize($black, 0.2);
+  background-color: transparentize($white, 0.7);
+
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-top: -0.75rem;
+  margin-left: -0.75rem;
+
+  border-radius: 50%;
+
+  transition: ease-in-out transform 0.15s;
+
+  &:hover {
+    transform: scale(1.25);
+  }
+}
+
+.stats__chart-wrapper {
+  width: 60%;
 }
 
 .bar-chart {
