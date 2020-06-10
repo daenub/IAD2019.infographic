@@ -291,6 +291,7 @@ const BarChart = ({data}) => {
 
   return (
     <div className="bar-chart">
+      <h2 className="bar-chart__title">{title}</h2>
       <div className="bar-chart__y-axis">
         <div className="bar-chart__y-axis-max">
           {prettifyValue ? prettifyValue(maxValue) : maxValue}
@@ -325,7 +326,7 @@ const BarChart = ({data}) => {
 }
 
 const MultiBarChart = ({data}) => {
-  const {bars, valueLabels} = data
+  const {bars, valueLabels, title} = data
 
   const maxValue = useMemo(() => {
     return max(bars.map(bar => sum(bar.values)))
@@ -333,6 +334,7 @@ const MultiBarChart = ({data}) => {
 
   return (
     <div className="bar-chart bar-chart--multi">
+      <h2 className="bar-chart__title">{title}</h2>
       <div className="bar-chart__y-axis">
         <div className="bar-chart__y-axis-max">{maxValue}</div>
         <div className="bar-chart__y-axis-min">0</div>

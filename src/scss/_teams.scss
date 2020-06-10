@@ -10,6 +10,11 @@ $row-templates: "";
 
 $row-templates: unquote($row-templates);
 
+.teams-wrapper {
+  background-color: $white;
+  padding: 5rem 3rem;
+}
+
 .teams {
   display: grid;
   grid-template-rows: $row-templates;

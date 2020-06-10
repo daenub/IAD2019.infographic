@@ -1,14 +1,26 @@
+$stats-breakpoint: screen and (min-width: 66.25rem);
 $chart-height: 13rem;
 
 .stats {
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
+
+  margin: 0 auto;
+  max-width: 90rem;
+
+  @media #{$stats-breakpoint} {
+    flex-direction: row;
+  }
 }
 
 .stats__selector {
-  width: 40%;
-
   position: relative;
+  max-width: 35rem;
+
+  @media #{$stats-breakpoint} {
+    width: 40%;
+  }
 }
 
 .stats__marker {
@@ -51,17 +63,40 @@ $chart-height: 13rem;
 }
 
 .stats__chart-wrapper {
-  width: 60%;
+  position: relative;
+  box-shadow: 0 0 10rem $black;
+
+  background-color: $white;
+  margin-left: 1rem;
+  margin-right: 1rem;
+
+  padding: 3rem 2.5rem 3rem 2rem;
+  align-self: center;
+
+  @media #{$stats-breakpoint} {
+    width: 60%;
+    margin-left: -2rem;
+    margin-right: 0;
+  }
 }
 
 .bar-chart {
   display: grid;
-  grid-template-rows: max-content max-content;
-  grid-template-columns: 3rem 1fr;
+  grid-template-rows: max-content max-content max-content;
+  grid-template-columns: 4rem 1fr;
   grid-template-areas:
+    "title title"
     "axis chart"
     ". labels"
     "legend legend";
+}
+
+.bar-chart__title {
+  @extend %h2-font-styles;
+
+  grid-area: title;
+  margin: 0 0 4rem;
+  font-size: 1.75rem;
 }
 
 .bar-chart__bars {

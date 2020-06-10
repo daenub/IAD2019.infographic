@@ -10,6 +10,7 @@ html {
 
 body {
   font-family: "Raleway", sans-serif;
+  background: $navy-blue;
 }
 
 img {
@@ -36,6 +37,45 @@ img {
   }
 }
 
+.section {
+  margin-bottom: 10rem;
+}
+
 .section__title {
   @extend %h2-font-styles;
+}
+
+/* Header */
+
+.header__image {
+  min-width: 100%;
+  display: block;
+}
+
+.header__meta {
+  position: relative;
+  z-index: 1;
+  background-color: $white;
+  margin: -5rem 3rem 5rem;
+  padding: 3rem 2rem;
+  box-shadow: 0 0 10rem $black;
+}
+
+.header__title {
+  margin-top: 0;
+  font-size: 3rem;
+  text-align: center;
+}
+
+.header__number {
+  display: block;
+  font-size: 3rem;
+  font-weight: normal;
+  text-align: center;
+}
+
+.header__characteristics {
+  font-size: 1.25rem;
+  text-align: center;
+  // margin: 0;
 }
