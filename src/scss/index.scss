@@ -45,6 +45,10 @@ img {
 
 .section__title {
   @extend %h2-font-styles;
+
+  .section--stats & {
+    color: $white;
+  }
 }
 
 /* Header */
