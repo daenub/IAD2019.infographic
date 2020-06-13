@@ -81,7 +81,7 @@ const MapChart = () => {
 
   return (
     <div>
-      <ComposableMap projection="geoAlbers" data-tip="">
+      <ComposableMap projection="geoAlbers" data-tip="" height={900} width={1000}>
         <Geographies geography={geoUrl}>
           {({ geographies }) => (
             <React.Fragment>
