@@ -1,4 +1,7 @@
-$stats-breakpoint: screen and (min-width: 66.25rem);
+$stats-breakpoint: screen and
+  (
+    min-width: 66.25rem,
+  );
 $chart-height: 13rem;
 
 .stats {
@@ -40,26 +43,6 @@ $chart-height: 13rem;
   margin-left: -0.75rem;
 
   border-radius: 50%;
-}
-
-.stats__marker-label {
-  font: inherit;
-  background-color: $white;
-  margin-left: 1.5rem;
-  line-height: 1;
-  padding: 0.25rem;
-  box-shadow: 0 0 4px 0 transparentize($black, 0.2);
-
-  opacity: 0;
-  visibility: hidden;
-
-  transition: ease-in-out 0.15s;
-  transition-property: visibility opacity;
-
-  .stats__marker:hover & {
-    opacity: 1;
-    visibility: visible;
-  }
 }
 
 .stats__chart-wrapper {
@@ -147,7 +130,7 @@ $chart-height: 13rem;
     bottom: 100%;
     transform: translateX(-50%);
     color: $black;
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
   }
 }
 

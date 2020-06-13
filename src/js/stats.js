@@ -1,5 +1,6 @@
 import React, {useMemo, useState, useCallback} from "react"
 import ReactDOM from "react-dom"
+import ReactTooltip from "react-tooltip"
 
 export const initStats = () => {
   ReactDOM.render(<Stats />, document.querySelector("#stats"))
@@ -265,8 +266,10 @@ const Stats = () => {
 }
 
 const Selector = ({onSelect}) => {
+  const [tooltipContent, setTooltipContent] = useState("")
+
   return (
-    <div className="stats__selector">
+    <div className="stats__selector" data-tip="">
       <img src={require("../images/selection-sq.jpg")} alt="Roman Josi" />
       {marker.map(m => (
         <button
@@ -274,10 +277,11 @@ const Selector = ({onSelect}) => {
           className="stats__marker"
           style={{top: `${m.y}%`, left: `${m.x}%`}}
           onClick={() => onSelect(m.key)}
-        >
-          <span className="stats__marker-label">{m.label}</span>
-        </button>
+          onMouseEnter={() => setTooltipContent(m.label)}
+          onMouseLeave={() => setTooltipContent("")}
+        />
       ))}
+      <ReactTooltip>{tooltipContent}</ReactTooltip>
     </div>
   )
 }
