@@ -1,5 +1,6 @@
-import React, {useMemo, useState, useCallback, useRef, useEffect} from "react"
+import React, {useMemo, useState, useCallback, useRef, useEffect, memo} from "react"
 import ReactDOM from "react-dom"
+import ReactTooltip from "react-tooltip"
 
 import { geoCentroid } from "d3-geo";
 import {
@@ -17,7 +18,7 @@ import teamCoords from "../data/team_coords.json"
 const BASE_TEAM = teamCoords.find(({abbreviation}) => abbreviation === "NSH")
 
 export const initMap = () => {
-  ReactDOM.render(<MapChart />, document.querySelector("#map"))
+  ReactDOM.render(<MapChartMemo />, document.querySelector("#map"))
 }
 
 const COLORS = {
@@ -36,34 +37,76 @@ const offsets = {
   NJD: [18, 60],
 }
 
+// https://stackoverflow.com/a/1502821
+const R = 6378137 // Earth’s mean radius in meter
+
+const rad = x => x * Math.PI / 180
+
+const getDistance = (p1, p2) => {
+  p1 = {
+    lng: p1[0],
+    lat: p1[1]
+  }
+
+  p2 = {
+    lng: p2[0],
+    lat: p2[1]
+  }
+
+  const dLat = rad(p2.lat - p1.lat)
+  const dLong = rad(p2.lng - p1.lng)
+  const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(rad(p1.lat)) * Math.cos(rad(p2.lat)) *
+    Math.sin(dLong / 2) * Math.sin(dLong / 2)
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
+  return R * c
+}
+
 const MapChart = () => {
   const [selectedTeam, setSelectedTeam] = useState(null)
+  const tooltipContent = useMemo(() => {
+    if (selectedTeam === null) {
+      return ""
+    } else {
+      const team = teamCoords.find(team => team.abbreviation === selectedTeam)
+      const name = team.name
+      const distance = Math.round(getDistance(team.coordinates, BASE_TEAM.coordinates) / 1000)
+
+      return `${name} – ${distance}km`
+    }
+
+  }, [selectedTeam])
 
   const selectTeam = abbreviation => setSelectedTeam(abbreviation)
 
   return (
-    <ComposableMap projection="geoAlbers">
-      <Geographies geography={geoUrl}>
-        {({ geographies }) => (
-          <React.Fragment>
-            {geographies.map(geo => {
-              return (
-                <Geography
-                  key={geo.rsmKey}
-                  stroke="#FFF"
-                  geography={geo}
-                  fill="#DDD"
-                />
-              )
-            })}
-            <Lines selectedTeam={selectedTeam} />
-            <Teams selectTeam={selectTeam} selectedTeam={selectedTeam} />
-          </React.Fragment>
-        )}
-      </Geographies>
-    </ComposableMap>
+    <div>
+      <ComposableMap projection="geoAlbers" data-tip="">
+        <Geographies geography={geoUrl}>
+          {({ geographies }) => (
+            <React.Fragment>
+              {geographies.map(geo => {
+                return (
+                  <Geography
+                    key={geo.rsmKey}
+                    stroke="#FFF"
+                    geography={geo}
+                    fill="#DDD"
+                  />
+                )
+              })}
+              <Lines selectedTeam={selectedTeam} />
+              <Teams selectTeam={selectTeam} selectedTeam={selectedTeam} />
+            </React.Fragment>
+          )}
+        </Geographies>
+      </ComposableMap>
+      <ReactTooltip>{tooltipContent}</ReactTooltip>
+    </div>
   )
 }
+
+const MapChartMemo = memo(MapChart)
 
 const Teams = ({selectTeam, selectedTeam}) => {
   return teamCoords.map(team => <Team selectTeam={selectTeam} team={team} key={team.name} selectedTeam={selectedTeam} />)
@@ -72,8 +115,8 @@ const Teams = ({selectTeam, selectedTeam}) => {
 const Team = ({team, selectTeam, selectedTeam}) => {
   const {name, coordinates, abbreviation} = team
 
-  const selected = selectedTeam === abbreviation
-  const deactivated = selectedTeam !== null && selectedTeam !== abbreviation
+  const selected = selectedTeam === abbreviation || abbreviation === BASE_TEAM.abbreviation
+  const deactivated = abbreviation !== BASE_TEAM.abbreviation && selectedTeam !== null && selectedTeam !== abbreviation
   const offset = offsets[abbreviation] || [0, 0]
 
   const classNames = ["map__team-logo"]
@@ -91,7 +134,13 @@ const Team = ({team, selectTeam, selectedTeam}) => {
           <circle cx="50" cy="50" r="50" fill="#fff" strokeWidth="3" stroke={COLORS.gold}></circle>
           <image x="10" y="10" height="80" width="80" xlinkHref={require(`../images/nhl-logos/${abbreviation}.png`)} fill="#fff"></image>
         </symbol>
-        <circle r={8} fill={COLORS.gold} />
+        <circle
+          r={8}
+          fill={COLORS.gold}
+          className={"map__team-anchor"}
+          onMouseEnter={() => selectTeam(abbreviation)}
+          onMouseLeave={() => selectTeam(null)}
+        />
         <use
           width="40"
           height="40"

@@ -8,6 +8,10 @@
   transform: scale(1);
 }
 
+.map__team-anchor {
+  cursor: pointer;
+}
+
 .map__team-logo--deactivated {
   transform: scale(0);
 }
