@@ -1,0 +1,250 @@
+[
+   {
+      "name":"Anaheim Ducks",
+      "coordinates":[
+         -117.876488,
+         33.807894
+      ],
+      "abbreviation": "ANA"
+   },
+   {
+      "name":"Arizona Coyotes",
+      "coordinates":[
+         -112.260919,
+         33.531853
+      ],
+      "abbreviation": "ARI"
+   },
+   {
+      "name":"Boston Bruins",
+      "coordinates":[
+         -71.062102,
+         42.366286
+      ],
+      "abbreviation": "BOS"
+   },
+   {
+      "name":"Buffalo Sabres",
+      "coordinates":[
+         -78.876502,
+         42.875019
+      ],
+      "abbreviation": "BUF"
+   },
+   {
+      "name":"Calgary Flames",
+      "coordinates":[
+         -114.052007,
+         51.037419
+      ],
+      "abbreviation": "CGY"
+   },
+   {
+      "name":"Carolina Hurricanes",
+      "coordinates":[
+         -78.721869,
+         35.803422
+      ],
+      "abbreviation": "CAR"
+   },
+   {
+      "name":"Chicago Blackhawks",
+      "coordinates":[
+         -87.674039,
+         41.880553
+      ],
+      "abbreviation": "CHI"
+   },
+   {
+      "name":"Colorado Avalanche",
+      "coordinates":[
+         -105.007651,
+         39.74872
+      ],
+      "abbreviation": "COL"
+   },
+   {
+      "name":"Columbus Blue Jackets",
+      "coordinates":[
+         -83.005952,
+         39.969326
+      ],
+      "abbreviation": "CBJ"
+   },
+   {
+      "name":"Dallas Stars",
+      "coordinates":[
+         -96.8103,
+         32.790467
+      ],
+      "abbreviation": "DAL"
+   },
+   {
+      "name":"Detroit Red Wings",
+      "coordinates":[
+         -83.05511,
+         42.341275
+      ],
+      "abbreviation": "DET"
+   },
+   {
+      "name":"Edmonton Oliers",
+      "coordinates":[
+         -113.497683,
+         53.546969
+      ],
+      "abbreviation": "EDM"
+   },
+   {
+      "name":"Florida Panthers",
+      "coordinates":[
+         -80.325543,
+         26.158517
+      ],
+      "abbreviation": "FLA"
+   },
+   {
+      "name":"Los Angeles Kings",
+      "coordinates":[
+         -118.267234,
+         34.043065
+      ],
+      "abbreviation": "LAK"
+   },
+   {
+      "name":"Minnesota Wild",
+      "coordinates":[
+         -93.101154,
+         44.944701
+      ],
+      "abbreviation": "MIN"
+   },
+   {
+      "name":"Montreal Canadiens",
+      "coordinates":[
+         -73.568946,
+         45.496002
+      ],
+      "abbreviation": "MTL"
+   },
+   {
+      "name":"Nashville Predators",
+      "coordinates":[
+         -86.778377,
+         36.1591
+      ],
+      "abbreviation": "NSH"
+   },
+   {
+      "name":"New Jersey Devils",
+      "coordinates":[
+         -74.171076,
+         40.733577
+      ],
+      "abbreviation": "NJD"
+   },
+   {
+      "name":"New York Islanders",
+      "coordinates":[
+         -73.975105,
+         40.682522
+      ],
+      "abbreviation": "NYI"
+   },
+   {
+      "name":"New York Rangers",
+      "coordinates":[
+         -73.99331,
+         40.750436
+      ],
+      "abbreviation": "NYR"
+   },
+   {
+      "name":"Ottawa Senators",
+      "coordinates":[
+         -75.926996,
+         45.296911
+      ],
+      "abbreviation": "OTT"
+   },
+   {
+      "name":"Philadephia Flyers",
+      "coordinates":[
+         -75.171995,
+         39.901154
+      ],
+      "abbreviation": "PHI"
+   },
+   {
+      "name":"Pittsburgh Penguins",
+      "coordinates":[
+         -79.989466,
+         40.439495
+      ],
+      "abbreviation": "PIT"
+   },
+   {
+      "name":"San Jose Sharks",
+      "coordinates":[
+         -121.901219,
+         37.332882
+      ],
+      "abbreviation": "SJS"
+   },
+   {
+      "name":"St. Louis Blues",
+      "coordinates":[
+         -90.202539,
+         38.626837
+      ],
+      "abbreviation": "STL"
+   },
+   {
+      "name":"Tampa Bay Lightning",
+      "coordinates":[
+         -82.451486,
+         27.942531
+      ],
+      "abbreviation": "TBL"
+   },
+   {
+      "name":"Toronto Maple Leafs",
+      "coordinates":[
+         -79.379072,
+         43.64346
+      ],
+      "abbreviation": "TOR"
+   },
+   {
+      "name":"Vancouver Canucks",
+      "coordinates":[
+         -123.108791,
+         49.277842
+      ],
+      "abbreviation": "VAN"
+   },
+   {
+      "name":"Vegas Golden Knights",
+      "coordinates":[
+         -115.178245,
+         36.102641
+      ],
+      "abbreviation": "VGK"
+   },
+   {
+      "name":"Washington Capitals",
+      "coordinates":[
+         -77.020934,
+         38.898073
+      ],
+      "abbreviation": "WSH"
+   },
+   {
+      "name":"Winnipeg Jets",
+      "coordinates":[
+         -97.1435,
+         49.892644
+      ],
+      "abbreviation": "WPG"
+   }
+]

@@ -1,0 +1,17 @@
+.map {
+
+}
+
+.map__team-logo {
+  cursor: pointer;
+  transition: .5s ease;
+  transform: scale(1);
+}
+
+.map__team-logo--deactivated {
+  transform: scale(0);
+}
+
+.map__line {
+  transition: .3s ease;
+}
